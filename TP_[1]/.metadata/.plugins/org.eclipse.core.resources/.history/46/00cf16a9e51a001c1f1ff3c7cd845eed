@@ -1,0 +1,136 @@
+/*
+ ============================================================================
+ Name        : TP.c
+ Author      : Leonel Ledesma
+ Version     :
+ Copyright   : Your copyright notice
+ Description : Hello World in C, Ansi-style
+ ============================================================================
+ */
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+
+#include "funcionesLeonel.h"
+#define TRUE 1
+#define FALSE 0
+
+int main(void) {
+
+	setbuf(stdout, NULL);
+
+		int opcion;
+	    int salir=FALSE;
+	    int esNumero=TRUE;
+
+	    float operandoUno=0;
+	    float operandoDos=0;
+
+	    float resultadoSuma;
+	    float resultadoResta;
+	    float resultadoDivision;
+	    float resultadoMultiplicacion;
+
+	    unsigned long resultadoFactorialA;
+	    unsigned long resultadoFactorialB;
+	    int factorialA = round(operandoUno);
+	    int factorialB = round(operandoDos);
+	    int banderaPrimerOperando=FALSE;
+	    int banderaSegundoOperando=FALSE;
+	    int banderaCalcular=FALSE;
+
+	    printf("Bienvenidos a la calculadora\n");
+	   printf("----------------------------\n");
+
+	    do{
+	    opcion = menuOpciones(banderaPrimerOperando, banderaSegundoOperando, operandoUno, operandoDos);
+
+	switch(opcion)
+	            {
+	            case 1:
+	                operandoUno = pedirNumero("Por favor ingrese el primer operando: ");
+	                banderaPrimerOperando=TRUE;
+	                factorialA = round(operandoUno);
+	                system("cls");
+
+	                break;
+	            case 2:
+	                operandoDos = pedirNumero("Por favor ingrese el segundo operando: ");
+	                banderaSegundoOperando=TRUE;
+	                factorialB = round(operandoDos);
+	                system("cls");
+
+	                break;
+	            case 3:
+	            	system("cls");
+	            	if(banderaPrimerOperando==TRUE && banderaSegundoOperando==TRUE)
+	            	{
+	            		banderaCalcular=TRUE;
+	            		resultadoSuma = sumarFloats(operandoUno, operandoDos);
+	            		resultadoResta = restarFloats(operandoUno, operandoDos);
+	            		resultadoDivision = dividirFloats(operandoUno, operandoDos);
+	            		resultadoMultiplicacion = multiplicarFloats(operandoUno, operandoDos);
+						resultadoFactorialA = factorial(factorialA);
+						resultadoFactorialB = factorial(factorialB);
+						printf("Los calculos se han ralizado correctamente");
+                   	}
+	            	else
+	            	{
+						printf("Primero debe cargar todos los operandos.\n");
+
+	            	}
+
+
+	                break;
+	            case 4:
+	            	system("cls");
+	                if(banderaCalcular==TRUE)
+	                	{
+							printf("Los resultados calculados son: \n");
+							printf("El resultado de %.2f + %.2f es: %.2f\n", operandoUno, operandoDos, resultadoSuma);
+							printf("El resultado de %.2f - %.2f es: %.2f\n", operandoUno, operandoDos, resultadoResta);
+						    if (resultadoDivision!=0)
+	                	    {
+	                	        printf("El resultado de %.2f / %.2f es: %.2f\n", operandoUno, operandoDos, resultadoDivision);
+	                	    }
+						    else
+						    {
+							printf("No se puede realizar una division si el segundo operando es '0'.\n");
+						    }
+							printf("El resultado de %.2f * %.2f es: %.2f\n", operandoUno, operandoDos, resultadoMultiplicacion);
+	                	    if(resultadoFactorialA!=0 && resultadoFactorialB!=0)
+	                	    {
+	                	    	printf("El factorial de %d es: %lu y El factorial de %d es: %lu\n", factorialA, resultadoFactorialA, factorialB, resultadoFactorialB);
+	                	    }
+	                	    else
+	                	    {
+	                	    	printf("No se puede realizar factorial de numeros negativos.");
+	                	    }
+	                	    system("pause>nul");
+	                	}
+	                else
+	                {
+	                	printf("Para informar los resultados, primero debe calcularlos.");
+
+	                }
+
+
+	                break;
+	            case 5:
+	                salir=TRUE;
+	                printf("Hasta luego");
+	                break;
+	            default:
+	                salir=FALSE;
+	                system("cls");
+	                printf("ERROR. Seleccione una opcion correcta\n");
+
+	                break;
+	            }
+	        } while(salir==FALSE );
+
+	    printf("Hola mundo");
+
+	return EXIT_SUCCESS;
+}

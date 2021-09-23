@@ -1,0 +1,56 @@
+/*
+ * funcionesAritmeticas.c
+ *
+ *  Created on: 20 sept 2021
+ *      Author: Leonel
+ */
+
+#include "funcionesLeonel.h"
+
+float sumarFloats(float primerNumero, float segundoNumero)
+{
+    float resultado;
+    resultado = primerNumero+segundoNumero;
+    return resultado;
+}
+
+
+float restarFloats(float primerNumero, float segundoNumero)
+{
+    float resultado;
+    resultado = primerNumero-segundoNumero;
+    return resultado;
+}
+
+float dividirFloats(float primerNumero, float segundoNumero)
+{
+    float resultado= 0;
+    if(segundoNumero!=0){
+    resultado = primerNumero/segundoNumero;
+    }
+    return resultado;
+}
+
+float multiplicarFloats(float primerNumero, float segundoNumero)
+{
+    float resultado;
+    resultado = primerNumero*segundoNumero;
+    return resultado;
+}
+
+unsigned long factorial (int numero)
+{
+    unsigned long resultado = 0;
+
+    if(numero >= 0)
+    {
+        resultado = 1;
+
+        for(int i = 1; i<=numero; i++)
+        {
+            resultado*=i;
+        }
+
+    }
+    return resultado;
+}

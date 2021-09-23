@@ -1,0 +1,279 @@
+/*
+ * entradaDatos.c
+ *
+ *  Created on: 19 sept 2021
+ *      Author: Leonel
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <ctype.h>
+#include "entradaDatos.h"
+
+#define TRUE 1
+#define FALSE 0
+
+//ACA PONGO EL CODIGO DE LAS FUNCIONES
+
+void menuOpciones()
+
+{
+int opcion;
+int salir=FALSE;
+int esNumero=TRUE;
+float operandoUno=0;
+float operandoDos=0;
+
+float resultadoSuma;
+float resultadoResta;
+float resultadoDivision;
+float resultadoMultiplicacion;
+int factorialA = round(operandoUno);
+int factorialB = round(operandoDos);
+unsigned long resultadoFactorialA;
+unsigned long resultadoFactorialB;
+
+
+int banderaSuma = FALSE;
+int banderaResta = FALSE;
+int banderaDivision  =FALSE;
+int banderaMultiplicacion = FALSE;
+int banderaFactorial = FALSE;
+
+
+
+do{
+
+printf("Bienvenidos a la calculadora\n");
+printf("----------------------------\n");
+do{
+printf("1. Ingresar 1er operando (A=%.2f)\n", operandoUno);
+printf("2. Ingresar 2do operando (B=%.2f)\n", operandoDos);
+printf("3. Calcular todas las operaciones\n");
+printf("4. Informar resultados\n");
+printf("5. Salir\n");
+printf("Por favor seleccione una opcion: ");
+scanf("%d", &opcion);
+
+fflush(stdin);
+
+
+switch(opcion)
+	{
+case 1:
+	operandoUno = pedirNumero("Por favor ingrese el primer operando: ");
+
+	factorialA = round(operandoUno);
+	factorialB = round(operandoDos);
+
+    break;
+case 2:
+	operandoDos = pedirNumero("Por favor ingrese el segundo operando: ");
+
+
+    break;
+case 3:
+	menuCalcularOperaciones(operandoUno, operandoDos, factorialA, factorialB, &banderaSuma, &resultadoSuma, &banderaResta, &resultadoResta, &banderaMultiplicacion, &resultadoMultiplicacion, &banderaDivision, &resultadoDivision, &banderaFactorial, &resultadoFactorialA, &resultadoFactorialB);
+
+    break;
+case 4:
+	menuMostrarOperaciones(operandoUno, operandoDos, factorialA, factorialB, banderaSuma, resultadoSuma, banderaResta, resultadoResta, banderaMultiplicacion, resultadoMultiplicacion, banderaDivision, resultadoDivision, banderaFactorial, resultadoFactorialA, resultadoFactorialB);
+	break;
+case 5:
+	salir=TRUE;
+	break;
+default:
+	esNumero=FALSE;
+    printf("ERROR. Seleccione una opcion correcta\n");
+    break;
+	}
+}while(esNumero==FALSE);
+
+}while(salir==FALSE);
+
+
+}
+
+
+void menuCalcularOperaciones (void menuCalcularOperaciones(float operandoUno, float operandoDos, int factorialA, int factorialB, int* banderaSuma, float* resultadoSuma, int* banderaResta, float* resultadoResta, int* banderaMultiplicacion, float* resultadoMultiplicacion, int* banderaDivision, float* resultadoDivision, int* banderaFactorial, unsigned long* resultadoFactorialA, unsigned long* resultadoFactorialB);
+{
+	char opcion;
+	int valida=TRUE;
+	int salir=TRUE;
+	float resultadoSuma;
+	float resultadoResta;
+	float resultadoDivision;
+	float resultadoMultiplicacion;
+	unsigned long resultadoFactorialA;
+	unsigned long resultadoFactorialB;
+
+
+	int banderaSuma = FALSE;
+	int banderaResta = FALSE;
+	int banderaDivision  =FALSE;
+	int banderaMultiplicacion = FALSE;
+	int banderaFactorial = FALSE;
+
+
+	do{
+		do{
+	printf("Calcular operaciones: \n");
+	printf("---------------------\n");
+	printf("a) Calcular la suma (%.2f+%.2f)\n", operandoUno, operandoDos);
+	printf("b) Calcular la resta (%.2f-%.2f)\n", operandoUno,operandoDos);
+	printf("c) Calcular la division (%.2f/%.2f)\n", operandoUno, operandoDos);
+	printf("d) Calcular la multiplicacion (%.2f/%.2f)\n", operandoUno, operandoDos);
+	printf("e) Calcular el factorial (%d! y %d!\n)",factorialA, factorialB);
+	printf("Por favor seleccione una opcion: ");
+	scanf("%c", &opcion);
+	opcion = tolower(opcion);
+	fflush(stdin);
+	valida=TRUE;
+
+
+	switch(opcion)
+	{
+	case 'a':
+		banderaSuma=TRUE;
+		resultadoSuma= sumarFloats(operandoUno, operandoDos);
+
+
+		break;
+	case 'b':
+		banderaResta=TRUE;
+		resultadoResta = restarFloats(operandoUno, operandoDos);
+
+		break;
+	case 'c':
+		if(operandoDos!=0)
+		{
+		banderaDivision=TRUE;
+		resultadoDivision = dividirFloats(operandoUno, operandoDos);
+
+		}
+		else
+		{
+			printf("No se puede dividir por 0, por favor ingrese nuevamente el segundo operando");
+		}
+
+		break;
+	case 'd':
+		banderaMultiplicacion=TRUE;
+		resultadoMultiplicacion = multiplicarFloats(operandoUno, operandoDos);
+
+		break;
+	case 'e':
+
+		banderaFactorial=TRUE;
+		resultadoFactorialA = factorial(factorialA);
+		resultadoFactorialB = factorial(factorialB);
+
+		break;
+	default:
+		printf("ERROR. Inserte una opcion valida\n");
+		valida=FALSE;
+		break;
+	}
+	}while(valida==FALSE);
+	}while(salir==FALSE);
+
+
+
+}//ACA TERMINA
+
+
+
+void menuMostrarOperaciones (float operandoUno, float operandoDos, int factorialA, int factorialB, int banderaSuma, float resultadoSuma, int banderaResta, float resultadoResta, int banderaMultiplicacion, float resultadoMultiplicacion, int banderaDivision, float resultadoDivision, int banderaFactorial, int resultadoFactorialA, int resultadoFactorialB)
+{
+
+	printf("Los resultados calculados son: \n");
+		if (banderaSuma==TRUE)
+		{
+			printf("El resultado de %.2f+%.2f es: %.2f", operandoUno, operandoDos, resultadoSuma);
+		}
+
+		if (banderaResta==TRUE)
+		{
+			printf("El resultado de %.2f-%.2f es: %.2f", operandoUno, operandoDos, resultadoResta);
+		}
+
+		if (banderaDivision==TRUE)
+		{
+			printf("El resultado de %.2f/%.2f es: %.2f", operandoUno, operandoDos, resultadoDivision);
+		}
+
+		if (banderaMultiplicacion==TRUE)
+		{
+			printf("El resultado de %.2f*%.2f es: %.2f", operandoUno, operandoDos, resultadoMultiplicacion);
+		}
+
+		if (banderaFactorial==TRUE)
+		{
+			printf("El factorial de %d es: %d y El factorial de %d es: %d", factorialA, factorialB, resultadoFactorialA, resultadoFactorialB);
+
+		}
+
+}
+
+
+
+
+
+float sumarFloats(float primerNumero, float segundoNumero)
+{
+	float resultado;
+	resultado = primerNumero+segundoNumero;
+	return resultado;
+}
+
+
+float restarFloats(float primerNumero, float segundoNumero)
+{
+	float resultado;
+	resultado = primerNumero-segundoNumero;
+	return resultado;
+}
+
+float dividirFloats(float primerNumero, float segundoNumero)
+{
+	float resultado;
+	resultado = primerNumero/segundoNumero;
+	return resultado;
+}
+
+float multiplicarFloats(float primerNumero, float segundoNumero)
+{
+	float resultado;
+	resultado = primerNumero*segundoNumero;
+	return resultado;
+}
+
+unsigned long factorial (int numero)
+{
+	unsigned long resultado = 0;
+
+    if(numero >= 0)
+    {
+        resultado = 1;
+
+        for(int i = 1; i<=numero; i++)
+        {
+            resultado*=i;
+        }
+
+    }
+ return resultado;
+}
+
+
+float pedirNumero (char mensaje[])
+
+{
+        float numeroIngresado;
+        printf("%s", mensaje);
+        scanf("%f", &numeroIngresado);
+
+        return numeroIngresado;
+
+}
+

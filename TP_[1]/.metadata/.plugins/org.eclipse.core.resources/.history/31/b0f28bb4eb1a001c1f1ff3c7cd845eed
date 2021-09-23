@@ -1,0 +1,38 @@
+/*
+ * entradaDatos.c
+ *
+ *  Created on: 19 sept 2021
+ *      Author: Leonel
+ */
+#include <stdio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <ctype.h>
+
+#include "funcionesLeonel.h"
+
+#define TRUE 1
+#define FALSE 0
+
+
+float pedirNumero (char mensaje[])
+{
+	int banderaIngreso=FALSE;
+	int esNumero;
+    float numeroIngresado;
+
+		do
+		{
+			fflush(stdin);
+			printf("%s", mensaje);
+			esNumero=scanf("%f", &numeroIngresado);
+	printf("%d", esNumero);
+
+			fflush(stdin);
+		}while(esNumero);
+
+
+	return numeroIngresado;
+
+}
+

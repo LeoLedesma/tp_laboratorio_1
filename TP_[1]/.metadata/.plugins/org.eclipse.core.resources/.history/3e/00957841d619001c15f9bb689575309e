@@ -1,0 +1,27 @@
+/*
+ * entradaDatos.h
+ *
+ *  Created on: 19 sept 2021
+ *      Author: Leonel
+ */
+
+#ifndef ENTRADADATOS_H_
+#define ENTRADADATOS_H_
+
+
+
+
+#endif /* ENTRADADATOS_H_ */
+
+void menuOpciones();
+
+void menuCalcularOperaciones(float operandoUno, float operandoDos);
+
+float sumarFloats(float primerNumero, float segundoNumero);
+float restarFloats(float primerNumero, float segundoNumero);
+float dividirFloats(float primerNumero, float segundoNumero);
+float multiplicarFloats(float primerNumero, float segundoNumero);
+unsigned long factorial(int numero);
+
+float pedirNumero (char mensaje[]);
+
