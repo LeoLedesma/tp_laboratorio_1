@@ -8,17 +8,6 @@
 #ifndef FUNCIONESARITMETICAS_H_
 #define FUNCIONESARITMETICAS_H_
 
-
-
-
-/// \fn float sumaraFloats(float, float)
-/// \brief
-///
-/// \param primerNumero
-/// \param segundoNumero
-/// \return
-float sumaraFloats(float primerNumero, float segundoNumero);
-
 #endif /* FUNCIONESARITMETICAS_H_ */
 
 /** \brief Suma dos flotantes y devuelve el resultado.

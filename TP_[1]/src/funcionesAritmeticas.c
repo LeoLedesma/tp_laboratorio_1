@@ -7,12 +7,6 @@
 
 #include "funcionesAritmeticas.h"
 
-float sumaraFloats(float primerNumero, float segundoNumero)
-{
-int resultado = primerNumero+segundoNumero;
-return resultado;
-}
-
 float sumarFloats(float primerNumero, float segundoNumero)
 {
     float resultado;
