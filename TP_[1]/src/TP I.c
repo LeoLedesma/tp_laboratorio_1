@@ -85,11 +85,7 @@ int main(void)
                 resultadoMultiplicacion = multiplicarFloats(operandoUno, operandoDos);
                 resultadoFactorialA = factorizar(factorialA);
                 resultadoFactorialB = factorizar(factorialB);
-
-                if(operandoUno<0&&operandoDos==0)
-                {
-                	resultadoMultiplicacion=resultadoMultiplicacion*-1;
-                }
+                printf("Se han realizado los calculos.\n");
             }
             else
             {
@@ -97,18 +93,47 @@ int main(void)
 
             }
 
-
             break;
         case 4:
             system("cls");
             if(banderaCalcular==TRUE)
             {
+            	printf("Los resultados calculados son: \n");
+				printf("a) El resultado de %.2f + %.2f es: %.2f\n", operandoUno, operandoDos, resultadoSuma);
+				printf("b) El resultado de %.2f - %.2f es: %.2f\n", operandoUno, operandoDos, resultadoResta);
+				if (operandoDos!=0)
+				{
+					printf("c) El resultado de %.3f / %.2f es: %.3f\n", operandoUno, operandoDos, resultadoDivision);
+				}
+				else
+				{
+					printf("c) No se puede realizar una division si el segundo operando es '0'.\n");
+				}
+				printf("d) El resultado de %.2f * %.2f es: %.2f\n", operandoUno, operandoDos, resultadoMultiplicacion);
+				if(factorialA>=0 && factorialA<=12)
+				{
+					printf("e) El factorial de %d es: %lu ", factorialA, resultadoFactorialA);
+				}
+				else
+				{
+					printf("e) No se pudo calcular el factorial de %d ", factorialA);
+				}
 
-                mostrarResultados(operandoUno, operandoDos, factorialA, factorialB, resultadoSuma, resultadoResta, resultadoDivision, resultadoMultiplicacion, resultadoFactorialA, resultadoFactorialB);
+				if(factorialB>=0 && factorialB<=12)
+				{
+					printf("y el factorial de %d es: %lu.\n", factorialB, resultadoFactorialB);
+				}
+				else
+				{
+					printf("y no se pudo calcular el factorial de %d.\n", factorialB);
+				}
+
+				system("pause");
+				system("cls");
             }
             else
             {
-                printf("Para informar los resultados, primero debe calcularlos.\n");
+                printf("Para informar los resultados, primero debe calcularlos (opcion 3).\n");
 
             }
 
@@ -119,7 +144,6 @@ int main(void)
             printf("Hasta luego");
             break;
         default:
-            salir=FALSE;
             system("cls");
             printf("ERROR. Seleccione una opcion correcta\n");
 

@@ -35,6 +35,11 @@ float multiplicarFloats(float primerNumero, float segundoNumero)
 {
     float resultado;
     resultado = primerNumero*segundoNumero;
+
+    if(primerNumero<0&&segundoNumero==0)
+                   {
+                   	resultado=resultado*-1;
+                   }
     return resultado;
 }
 
