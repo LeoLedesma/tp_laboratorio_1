@@ -114,7 +114,6 @@ int main(void)
             printf("Hasta luego");
             break;
         default:
-            salir=FALSE;
             system("cls");
             printf("ERROR. Seleccione una opcion correcta\n");
 
