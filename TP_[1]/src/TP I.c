@@ -85,6 +85,11 @@ int main(void)
                 resultadoMultiplicacion = multiplicarFloats(operandoUno, operandoDos);
                 resultadoFactorialA = factorizar(factorialA);
                 resultadoFactorialB = factorizar(factorialB);
+
+                if(operandoUno<0&&operandoDos==0)
+                {
+                	resultadoMultiplicacion=resultadoMultiplicacion*-1;
+                }
             }
             else
             {
