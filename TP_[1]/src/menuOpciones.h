@@ -5,6 +5,9 @@
  *      Author: Leonel
  */
 
+#ifndef MENUOPCIONES_H_
+#define MENUOPCIONES_H_
+
 
 /** \brief Despliega un menu de opciones numericas para una calculadora, solicita la eleccion de la misma y devuelve el resultado.
  *
@@ -33,3 +36,6 @@ int desplegarMenuOpciones(int banderaPrimerOperando, int banderaSegundoOperando,
  *
  */
 void mostrarResultados(float operandoUno, float operandoDos, int factorialA, int factorialB, float resultadoSuma, float resultadoResta, float resultadoDivision, float resultadoMultiplicacion, unsigned long resultadoFactorialA, unsigned long resultadoFactorialB);
+
+
+#endif /* MENUOPCIONES_H_ */

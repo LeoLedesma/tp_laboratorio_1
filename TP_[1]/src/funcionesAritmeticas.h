@@ -8,7 +8,6 @@
 #ifndef FUNCIONESARITMETICAS_H_
 #define FUNCIONESARITMETICAS_H_
 
-#endif /* FUNCIONESARITMETICAS_H_ */
 
 /** \brief Suma dos flotantes y devuelve el resultado.
  *
@@ -66,3 +65,6 @@ int redondearFloat(float numero);
  *
  */
 unsigned long factorizar(int numero);
+
+
+#endif /* FUNCIONESARITMETICAS_H_ */

@@ -19,16 +19,19 @@ float getFloatValidado (char mensaje[])
 	int esNumero;
     float numeroIngresado;
 
-		do
-		{
-			fflush(stdin);
-			printf("%s", mensaje);
-			esNumero=scanf("%f", &numeroIngresado);
-			fflush(stdin);
-		}while(!esNumero);
+    fflush(stdin);
+	printf("%s", mensaje);
+	esNumero=scanf("%f", &numeroIngresado);
+	fflush(stdin);
 
+    while(!esNumero)
+    {
+    	printf("ERROR. ");
+    	printf("%s", mensaje);
+    	esNumero=scanf("%f", &numeroIngresado);
+    }
 
-	return numeroIngresado;
+    return numeroIngresado;
 
 }
 

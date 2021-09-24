@@ -56,9 +56,9 @@ int main(void)
             operandoUno = getFloatValidado("Por favor ingrese el primer operando: ");
             banderaPrimerOperando=TRUE;
             if(banderaPrimerOperando==TRUE && banderaCalcular==TRUE)
-            	{
-            	banderaCalcular=FALSE;
-            	}
+            {
+                banderaCalcular=FALSE;
+            }
             factorialA = redondearFloat(operandoUno);
             system("cls");
 
@@ -67,9 +67,9 @@ int main(void)
             operandoDos = getFloatValidado("Por favor ingrese el segundo operando: ");
             banderaSegundoOperando=TRUE;
             if(banderaSegundoOperando==TRUE && banderaCalcular==TRUE)
-               {
-            	banderaCalcular=FALSE;
-               }
+            {
+                banderaCalcular=FALSE;
+            }
             factorialB = redondearFloat(operandoDos);
             system("cls");
 
@@ -114,6 +114,7 @@ int main(void)
             printf("Hasta luego");
             break;
         default:
+            salir=FALSE;
             system("cls");
             printf("ERROR. Seleccione una opcion correcta\n");
 

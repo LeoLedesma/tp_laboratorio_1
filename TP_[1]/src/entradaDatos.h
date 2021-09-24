@@ -9,10 +9,6 @@
 #define ENTRADADATOS_H_
 
 
-
-#endif /* ENTRADADATOS_H_ */
-
-
 /** \brief Solicita un número al usuario, valida que sea un numero y devuelve el resultado
  *
  * \param mensaje[] char Es el mensaje a ser mostrado
@@ -20,3 +16,7 @@
  *
  */
 float getFloatValidado(char mensaje[]);
+
+
+#endif /* ENTRADADATOS_H_ */
+
