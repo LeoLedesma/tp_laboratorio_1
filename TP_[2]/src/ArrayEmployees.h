@@ -1,6 +1,10 @@
 #ifndef ARRAYEMPLOYEES_H_INCLUDED
 #define ARRAYEMPLOYEES_H_INCLUDED
 
+#include "entradas.h"
+
+#define SIZE_LIST 1000
+#define SIZE_STRING 51
 
 struct{
  int id;
@@ -15,6 +19,13 @@ struct{
 
 #endif // ARRAYEMPLOYEES_H_INCLUDED
 
+
+int menuEmployees();
+
+int menuPrintEmployees(Employee* list, int len);
+
+int getDataEmployee(Employee* list, int len, int nextId);
+
 /** \brief To indicate that all position in the array are empty,
  * this function put the flag (isEmpty) in TRUE in all
  * position of the array
@@ -24,7 +35,6 @@ struct{
  *
  */
 int initEmployees(Employee* list, int len);
-
 
 /** \brief add in a existing list of employees the values received as parameters
  * in the first empty position
@@ -82,7 +92,6 @@ indicate UP or DOWN order
  */
 int sortEmployees(Employee* list, int len, int order);
 
-
 int printEmploye(Employee list);
 
 float totalSalaryEmployees(Employee* list, int len);
@@ -90,4 +99,25 @@ float totalSalaryEmployees(Employee* list, int len);
 float getMedianSalaryEmployees(Employee* list, int len);
 
 int getEmployeesUpMedianSalary(Employee* list, int len);
+
+int findEmpty(Employee* lista, int tam);
+
+//------------------PEDIDO DE DATOS DE EMPLEADOS
+
+
+int getIdEmployee(Employee* list, int len);
+
+//------------------MODIFICACIONES DE EMPLEADOS
+
+int modifyEmployee(Employee* list, int len, int lenName);
+
+int offEmployee(Employee* list, int len);
+
+int modifyName(Employee* list, int index, char newName[]);
+
+int modifyLastname(Employee* list, int index, char newLastname[]);
+
+int modifySalary(Employee* list,int index, float newSalary);
+
+int modifySector(Employee* list,int index, int newSector);
 
