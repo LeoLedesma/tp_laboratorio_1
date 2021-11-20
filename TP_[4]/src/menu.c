@@ -16,8 +16,9 @@ int menuOpciones()
 	printf("  7. Ordenar empleados.\n");
 	printf("  8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
 	printf("  9. Guardar los datos de los empleados en el archivo data.bin (modo binario).\n");
-	printf(" 10. Iniciar testing de funciones Linkedlist.");
-	printf(" 11. Salir\n");
+	printf(" 10. Iniciar testing de funciones Linkedlist.\n");
+	printf(" 11. Menu opciones LinkedList");
+	printf(" 13. Salir\n");
 
 	fflush(stdin);
 	getInt("Por favor elija una opcion: ",
@@ -225,7 +226,12 @@ int menuPrincipal(LinkedList *listaEmpleados)
 					startTesting(18); // ll_clone
 					startTesting(19); // ll_sort
 				break;
-			case 11: //salir
+			case 11:
+					funcionesLinkedlist(listaEmpleados);
+				break;
+			case 12:
+				break;
+			case 13: //salir
 				system("cls");
 				if (((flagAdd && flagLoad) || flagAdd)
 						&& ll_len(listaEmpleados) > 0 && !flagSave)
@@ -307,4 +313,66 @@ int menuModificaciones()
 	getInt("Por favor elija una opcion: ",
 			"ERROR. Por favor elija una opcion (solo numeros): ", &option);
 	return option;
+}
+
+int funcionesLinkedlist(LinkedList *listaEmpleados)
+{
+	/*startTesting(11); // ll_indexOf
+	startTesting(12); // ll_isEmpty
+	startTesting(13); // ll_push
+	startTesting(14); // ll_pop
+	startTesting(15); // ll_contains
+	startTesting(16); // ll_containsAll
+	startTesting(17); // ll_subList
+	startTesting(18); // ll_clone*/
+
+	int option;
+	if(listaEmpleados!=NULL)
+	{
+
+		option = menuOpcionesLinkedlist();
+		printf("  1. Encontrar indice de un empleado. (ll_indexOf\n");
+		printf("  2. Insertar empleado en indice en particular. (ll_push\n");
+		printf("  3. Quitar un empleado de la lista para agregarlo en otra. (ll_pop\n");
+		printf("  4. Verificar si un empleado esta en la lista. (ll_contains\n");
+		printf("  5. Comparar si las listas son identicas (ll_containsAll\n");
+		printf("  6. Crear una segunda lista (ll_subList\n");
+		printf("  7. Clonar una lista (ll_subList\n");
+		printf("  8. Verificar lista vacia (ll_isEmpty)");
+
+				getInt("Por favor elija una opcion:",
+					"ERROR. Por favor elija una opcion (Solo numeros):", &option);
+
+	}
+
+
+	return option;
+}
+
+
+int menuOpcionesLinkedlist()
+{
+	int opcion;
+	system("cls");
+
+	printf(	"                    ***    LISTA DE OPCIONES IMPLEMENTACION LINKEDLIST    *** 	\n");
+	printf(	"-----------------------------------------------------------------------------------------\n");
+	printf("  1. \n");
+	printf("  2. \n");
+	printf("  3. \n");
+	printf("  4. \n");
+	printf("  5. \n");
+	printf("  6. Listar empleados.\n");
+	printf("  7. Ordenar empleados.\n");
+	printf("  8. Guardar los datos de los empleados en el archivo data.csv (modo texto).\n");
+	printf("  9. Guardar los datos de los empleados en el archivo data.bin (modo binario).\n");
+	printf(" 10. Iniciar testing de funciones Linkedlist.\n");
+	printf(" ");
+	printf(" 13. Salir\n");
+
+	fflush(stdin);
+	getInt("Por favor elija una opcion: ",
+			"ERROR. Por favor elija una opcion (solo numeros): ", &opcion);
+
+	return opcion;
 }
