@@ -21,3 +21,7 @@ int controller_saveAsBinary(char* path , LinkedList* pArrayListEmployee);
 
 
 int controller_findEmployeeById(LinkedList* pArrayListEmployee, int id);
+int controller_addEmployeeIndex(LinkedList* pArrayListEmployee);
+LinkedList* controller_createSubList(LinkedList* pArrayListEmployee);
+LinkedList* controller_getList(LinkedList *listaEmpleados, LinkedList *sublistaEmpleados, LinkedList* listaClonada);
+int controller_moveEmployee(LinkedList* listaOrigen, LinkedList* listaDestino);

@@ -20,7 +20,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "../testing/inc/main_test.h"
+//#include "../testing/inc/main_test.h"
 #include "../inc/LinkedList.h"
 #include "menu.h"
 
@@ -29,8 +29,13 @@ int main(void)
 	setbuf(stdout, NULL);
 
 	LinkedList* listaEmpleados = ll_newLinkedList();
+	LinkedList* sublistaEmpleado = NULL;
+	LinkedList* listaClonada = NULL;
 
-	menuPrincipal(listaEmpleados);
+	if(listaEmpleados!=NULL)
+	{
+		menuPrincipal(listaEmpleados, sublistaEmpleado, listaClonada);
+	}
 
 
 	/*startTesting(1);  // ll_newLinkedList //usada
@@ -52,6 +57,10 @@ int main(void)
 	startTesting(17); // ll_subList
 	startTesting(18); // ll_clone
 	startTesting(19); // ll_sort //aplicada*/
+
+	ll_deleteLinkedList(listaClonada);
+	ll_deleteLinkedList(sublistaEmpleado);
+	ll_deleteLinkedList(listaEmpleados);
 
 	system("pause");
 

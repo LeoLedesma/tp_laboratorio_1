@@ -116,6 +116,7 @@ int controller_loadFromBinary(char *path, LinkedList *pArrayListEmployee)
 	return todoOk;
 }
 
+
 /** \brief Alta de empleados
  *
  * \param path char*
@@ -126,51 +127,21 @@ int controller_loadFromBinary(char *path, LinkedList *pArrayListEmployee)
 int controller_addEmployee(LinkedList *pArrayListEmployee)
 {
 	int todoOk = 0;
-	Employee *auxEmpleado = NULL;
+	Employee* auxEmployee = NULL;
 
-	int nextId;
-	char nombre[128];
-	int horasTrabajadas;
-	int sueldo;
-
-	char horasTrabajadasStr[10];
-	char sueldoStr[10];
-	char nextIdStr[10];
-
-	if (pArrayListEmployee != NULL)
+	if(pArrayListEmployee!=NULL)
 	{
-		printf("      *** ALTA DE EMPLEADO ***\n");
-		printf("-----------------------------------\n");
 
-		getString("Por favor ingrese el nombre del empleado: ",
-				"ERROR. Por favor ingrese el nombre del empleado (Solo letras): ",
-				nombre, 127);
-		toUpperFirstLetterPhrase(nombre, sizeof(nombre));
 
-		getInt("Por favor ingrese las horas trabajadas: ",
-				"Por favor ingrese las horas trabajadas (solo numeros): ",
-				&horasTrabajadas);
+	auxEmployee = employee_getNewEmployee(pArrayListEmployee);
 
-		itoa(horasTrabajadas, horasTrabajadasStr, 10);
-
-		getInt("Por favor ingrese el sueldo: ",
-				"ERROR.Por favor ingrese el sueldo (solo numeros): ", &sueldo);
-
-		itoa(sueldo, sueldoStr, 10);
-
-		nextId = employee_getMaxId(pArrayListEmployee) + 1;
-		itoa(nextId, nextIdStr, 10);
-
-		auxEmpleado = employee_newParametros(nextIdStr, nombre,
-				horasTrabajadasStr, sueldoStr);
-
-		if (auxEmpleado != NULL)
+		if (auxEmployee != NULL)
 		{
-			ll_add(pArrayListEmployee, auxEmpleado);
+			ll_add(pArrayListEmployee, auxEmployee);
 			printf("Empleado dado de alta con exito!!\n");
 			todoOk = 1;
 
-			auxEmpleado = NULL;
+			auxEmployee = NULL;
 		}
 		else
 		{
@@ -584,9 +555,179 @@ int controller_findEmployeeById(LinkedList *pArrayListEmployee, int id)
 					indice = i;
 					break;
 				}
+				auxEmployee = NULL;
 			}
 		}
 	}
 
 	return indice;
+}
+
+int controller_addEmployeeIndex(LinkedList* pArrayListEmployee)
+{
+
+	int todoOk = 0;
+	int idIngresado;
+	int index;
+	Employee* auxEmployee = NULL;
+
+	if(pArrayListEmployee!=NULL)
+	{
+
+
+	auxEmployee = employee_getNewEmployee(pArrayListEmployee);
+
+		if (auxEmployee != NULL)
+		{
+			controller_ListEmployee(pArrayListEmployee);
+			getInt("Antes de que empleado desea agregar el nuevo? ingrese su ID: ", "ERROR. Despues de que empleado desea agregar el nuevo? ingrese su ID (solo numeros):", &idIngresado);
+			index = controller_findEmployeeById(pArrayListEmployee, idIngresado);
+
+			if(index!=-1)
+			{
+				if(!ll_push(pArrayListEmployee, index, auxEmployee))
+				{
+					printf("Empleado dado de alta con exito!!\n");
+				}
+
+			}else
+			{
+				printf("ID incorrecto, por favor intente nuevamente.\n");
+			}
+
+			todoOk = 1;
+
+			auxEmployee = NULL;
+		}
+		else
+		{
+			printf("Ocurrio un error al cargar el empleado. Intente nuevamente\n");
+		}
+
+	}
+
+	return todoOk;
+}
+
+LinkedList* controller_createSubList(LinkedList* pArrayListEmployee)
+{
+	int auxId;
+	int indexFrom;
+	int indexTo;
+	LinkedList* sublist= NULL;
+
+
+
+	if(pArrayListEmployee!=NULL)
+	{
+
+		printf("  *** CREAR SUBLISTA ***\n");
+		printf("-------------------------------");
+
+		controller_ListEmployee(pArrayListEmployee);
+
+
+		getInt("\nDesde que empleado desea crear la sublista? Ingrese su ID: ", "ERROR. Desde que empleado desea crear la sublista? Ingrese su ID (solo numeros): ", &auxId);
+		indexFrom =controller_findEmployeeById(pArrayListEmployee, auxId);
+
+		if(indexFrom!=-1)
+		{
+			getInt("Hasta que empleado desea crear la sublista (excluido)? Ingrese su ID: ", "ERROR. Hasta que empleado desea crear la sublista (excluido)? Ingrese su ID (solo numeros): ", &auxId);
+				indexTo =controller_findEmployeeById(pArrayListEmployee, auxId);
+
+				if(indexTo!=-1)
+				{
+										sublist = ll_subList(pArrayListEmployee, indexFrom, indexTo);
+					controller_ListEmployee(sublist);
+					if(sublist!=NULL)
+					{
+					printf("Sublista creada con exito!!\n");
+					}
+
+				}
+		}
+
+
+
+	}
+
+
+	return sublist;
+}
+
+LinkedList* controller_getList(LinkedList *listaEmpleados, LinkedList *sublistaEmpleados, LinkedList* listaClonada)
+{
+	LinkedList* auxLinkedlist = NULL;
+	int option;
+
+	if(listaEmpleados!=NULL)
+	{
+		printf(" *** Seleccion de listas ***\n");
+		printf("------------------------------\n");
+
+		printf("  1. Lista de empleados.\n");
+		printf("  2. Sublista de empleados.\n");
+		printf("  3. Lista clonada.\n");
+
+		getInt("Por favor seleccione una opcion: ", "ERROR. Por favor seleccione una opcion: ", &option);
+
+		switch(option)
+		{
+		case 1:
+			auxLinkedlist = listaEmpleados;
+			break;
+		case 2:
+			auxLinkedlist = sublistaEmpleados;
+			break;
+		case 3:
+			auxLinkedlist = listaClonada;
+			break;
+		default:
+			printf("Opcion incorrecta. Volviendo al menu principal.\n");
+			break;
+		}
+
+	}
+
+	return auxLinkedlist;
+}
+
+int controller_moveEmployee(LinkedList* listaOrigen, LinkedList* listaDestino)
+{
+	int todoOk=0;
+	int indice;
+	int idIngresado;
+	Employee* auxEmployee = NULL;
+	if(listaOrigen!=NULL && listaDestino!=NULL)
+	{
+		printf("   *** Mover empleado ***\n");
+		printf("--------------------------\n");
+
+		controller_ListEmployee(listaOrigen);
+
+		getInt("Ingrese el ID del empleado que desea mover: ",
+						"ERROR. Ingrese el ID del empleado que desea mover (solo numeros): ",
+						&idIngresado);
+
+		indice = controller_findEmployeeById(listaOrigen, idIngresado);
+
+		if (indice == -1)
+		{
+			printf("ERROR. ID inexistente, regresando al menu principal.\n");
+		}else
+		{
+			auxEmployee = ll_pop(listaOrigen, indice);
+			if(!ll_add(listaDestino, auxEmployee))
+			{
+				printf("Empleado movido con exito!\n");
+			}
+
+		}
+
+
+
+		todoOk=1;
+	}
+
+	return todoOk;
 }

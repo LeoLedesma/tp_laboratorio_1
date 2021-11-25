@@ -3,14 +3,14 @@
 
 #include "entradas.h"
 #include "../inc/LinkedList.h"
-#include "../testing/inc/main_test.h"
+//#include "../testing/inc/main_test.h"
 #include "Controller.h"
 #include "Employee.h"
 #include "entradas.h"
 
 
 int menuOpciones();
-int menuPrincipal(LinkedList* listaEmpleados);
+int menuPrincipal(LinkedList *listaEmpleados, LinkedList *sublistaEmpleados, LinkedList* listaClonada);
 
 void mostrarGraficoEmpleado();
 

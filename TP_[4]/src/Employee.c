@@ -306,3 +306,48 @@ int employee_compareBySalary(void *employee1, void *employee2)
 	return todoOk;
 }
 
+Employee* employee_getNewEmployee(LinkedList* pArrayListEmployee)
+{
+	Employee *auxEmpleado = NULL;
+
+		int nextId;
+		char nombre[128];
+		int horasTrabajadas;
+		int sueldo;
+
+		char horasTrabajadasStr[10];
+		char sueldoStr[10];
+		char nextIdStr[10];
+
+		if(pArrayListEmployee!=NULL)
+		{
+
+			printf("      *** ALTA DE EMPLEADO ***\n");
+			printf("-----------------------------------\n");
+
+			getString("Por favor ingrese el nombre del empleado: ",
+					"ERROR. Por favor ingrese el nombre del empleado (Solo letras): ",
+					nombre, 127);
+			toUpperFirstLetterPhrase(nombre, sizeof(nombre));
+
+			getInt("Por favor ingrese las horas trabajadas: ",
+					"Por favor ingrese las horas trabajadas (solo numeros): ",
+					&horasTrabajadas);
+
+			itoa(horasTrabajadas, horasTrabajadasStr, 10);
+
+			getInt("Por favor ingrese el sueldo: ",
+					"ERROR.Por favor ingrese el sueldo (solo numeros): ", &sueldo);
+
+			itoa(sueldo, sueldoStr, 10);
+
+			nextId = employee_getMaxId(pArrayListEmployee) + 1;
+			itoa(nextId, nextIdStr, 10);
+
+			auxEmpleado = employee_newParametros(nextIdStr, nombre,
+					horasTrabajadasStr, sueldoStr);
+		}
+
+		return auxEmpleado;
+}
+

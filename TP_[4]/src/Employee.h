@@ -37,5 +37,6 @@ int employee_compareByName(void* employee1, void* employee2);
 int employee_compareByHours(void* employee1, void* employee2);
 int employee_compareBySalary(void* employee1, void* employee2);
 
+Employee* employee_getNewEmployee(LinkedList* pArrayListEmployee);
 
 #endif // employee_H_INCLUDED
